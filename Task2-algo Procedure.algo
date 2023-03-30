@@ -1,0 +1,38 @@
+PROCEDURE dot_product(VAR ps,v1,v2:FLOAT)
+//creating a preocedure that calculates the product (in a variable ps) of a pair of vectors v1 & v2
+VAR
+ps:=0;
+BEGIN
+   ps:=v1*v2;
+   Write (ps);
+END
+
+ALGORITHM Dot product
+VAR
+    dp: FLOAT; //dp is the dot product 
+    n,i,e: INTEGER; // n as the number of pairs, e is the number of elements in the array, i will be used to go through the pairs
+    tab : ARRAY_OF FLOAT[n]; //tab is the set of pairs of vectors
+    
+BEGIN
+
+//asking the user to specify the number of pairs so we can determine the number of elements in the array
+    Write ("How many pairs of vector would you like to verify?")
+    read (n) ;
+    e:=n*2;
+
+// insert from user
+FOR i FROM 0 TO e-1 STEP 1  DO 
+        read (tab[i])
+    END_FOR
+
+//Solutuion to our probelm : calculate the product of each provided pair : a pair in this case is two successive elements
+FOR i FROM 0 TO e-1 STEP 2  DO
+    dot_product(dp,i,i+2);
+    IF (dp:=0) THEN
+        Write("the two vectors are orthogonal")
+        ELSE
+        Write("the two vectors are not orthogonal")
+    END_IF
+
+END_FOR
+END
